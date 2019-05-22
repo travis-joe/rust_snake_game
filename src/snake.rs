@@ -108,10 +108,10 @@ impl Snake {
         };
 
         match moving_dir {
-            Direction::Up => (x: head_x, y: head_y - 1),
-            Direction::Down => (x: head_x, y: head_y + 1),
-            Direction::Left => (x: head_x - 1, y: head_y),
-            Direction::Right => (x: head_x + 1, y: head_y),
+            Direction::Up => (head_x, head_y - 1),
+            Direction::Down => (head_x, head_y + 1),
+            Direction::Left => (head_x - 1, head_y),
+            Direction::Right => (head_x + 1, head_y),
         }
     }
 
@@ -123,7 +123,7 @@ impl Snake {
     pub fn overlap_tail(&self, x: i32, y: i32) -> bool {
         let mut ch = 0;
         for block in &self.body {
-            if x == block.x && y == block {
+            if x == block.x && y == block.y {
                 return true;
             }
 
